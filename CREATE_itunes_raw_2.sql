@@ -1,7 +1,7 @@
 Create table itunes_raw_2(
 Provider varchar(10),
 Provider_country varchar(5),
-SKU varchar(50),
+SKU varchar(),
 Developer varchar(200),
 Title varchar(200),
 Version varchar(10),
@@ -21,4 +21,6 @@ Subscription varchar(20),
 Period varchar(20),
 Catagory varchar(15),
 CMB varchar(10),
+Device varchar(10),
+Supported_platforms varchar(15)
 );
