@@ -20,5 +20,5 @@ Parent_id int,
 Subscription varchar(20),
 Period varchar(20),
 Catagory varchar(15),
-CMB varchar(10)
+CMB varchar(10),
 );
