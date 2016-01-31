@@ -55,7 +55,7 @@ while start_date_1 <= end_date_1:
 
     start_date_1 = start_date_1 + timedelta(days=1)
 
-print "Finished processing LRS Data\nNow Importing into redshift"
+print "Finished processing Itunes Sales Data \n Now Importing into redshift"
     # Update files to redshift once completed
 
 # Connect to RedShift
@@ -93,16 +93,20 @@ while start_date_2 <= end_date_2:
 
         print "Downloading ITunes sales report for %s" % start_date_2
         call(["java", "Autoingestion", "autoingestion.properties", "80082574","Sales", "Daily", "Summary", "%s" % start_date_2.strftime("%Y%m%d")])
-        print "Uploading ITunes sales report for %s" % start_date_2
-        call(["s3cmd", "put", "S_D_80082574_%s.txt.gz" % start_date_2.strftime("%Y%m%d"), "s3://bibusuu/Itunes_sales_reports/new_files/%s/S_D_80082574_%s.txt.gz" % (start_date_2.strftime("%Y%m%d"),start_date_2)])
-        print "Removing local file for %s" % start_date_2
-        os.remove("S_D_80082574_%s.txt.gz" % start_date_2.strftime("%Y%m%d"))
+        if os.path.isfile("S_D_80082574_%s.txt.gz" % start_date_2.strftime("%Y%m%d")):
+            print "Uploading ITunes sales report for %s" % start_date_2
+            call(["s3cmd", "put", "S_D_80082574_%s.txt.gz" % start_date_2.strftime("%Y%m%d"), "s3://bibusuu/Itunes_sales_reports/new_files/%s/S_D_80082574_%s.txt.gz" % (start_date_2.strftime("%Y%m%d"),start_date_2)])
+            print "Removing local file for %s" % start_date_2
+            os.remove("S_D_80082574_%s.txt.gz" % start_date_2.strftime("%Y%m%d"))
+
+        else:
+            print 'File for %s is not available from the Itunes Store yet'  % start_date_2
 
 
 
     start_date_2 = start_date_2 + timedelta(days=1)
 
-print "Finished processing LRS Data\nNow Importing into redshift"
+print "Finished processing Itunes sales data \n Now Importing into redshift"
 
 # Update files to redshift once completed
 
