@@ -1,5 +1,5 @@
 create table itunes_raw as
-select title,
+select distinct title,
 version,
 units,
 developer_proceeds,
@@ -8,7 +8,7 @@ customer_currency,
 country_code,
 apple_id,
 customer_price,
-customer_price/coalesce(ber.rate, lag(ber.rate,1) ignore nulls over (partition by currency order by date((TIMESTAMP 'epoch' + ber.timestamp * INTERVAL '1 Second ')) )) as eur_amount,
+units * (customer_price/coalesce(ber.rate, lag(ber.rate,1) ignore nulls over (partition by currency order by date((TIMESTAMP 'epoch' + ber.timestamp * INTERVAL '1 Second ')) ))) as eur_amount,
 subscription,
 period
 from itunes_raw_first_half fh
@@ -18,7 +18,7 @@ and ber.currency = fh.customer_currency
 
 union all
 
-select title,
+select distinct title,
  version,
  units,
  developer_proceeds,
@@ -27,7 +27,7 @@ customer_currency,
 country_code,
 apple_id,
 customer_price,
-customer_price/coalesce(ber.rate, lag(ber.rate,1) ignore nulls over (partition by currency order by date((TIMESTAMP 'epoch' + ber.timestamp * INTERVAL '1 Second ')) )) as eur_amount,
+units * (customer_price/coalesce(ber.rate, lag(ber.rate,1) ignore nulls over (partition by currency order by date((TIMESTAMP 'epoch' + ber.timestamp * INTERVAL '1 Second ')) ))) as eur_amount,
 subscription,
 period
 from itunes_raw_second_half sh
