@@ -27,12 +27,12 @@ ISR = "Itunes_sales_reports"
 conn = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
 bucket = conn.get_bucket('bibusuu')
 
-# start_date_1 = date.today() -timedelta(days=365)
-start_date_1 = date(2015,10,20)
+start_date_1 = date.today() -timedelta(days=365)
+# start_date_1 = date(2015,10,20)
 end_date_1 = date(2015,10,25)
 
-# start_date_2 = date(2015,10,26)
-start_date_2 = date(2016,04,26)
+start_date_2 = date(2015,10,26)
+# start_date_2 = date(2016,04,26)
 end_date_2 = date.today() - timedelta(days=1)
 
 print "Looking for Sales files in s3 not downloaded yet"
