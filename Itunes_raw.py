@@ -149,7 +149,7 @@ while start_date_3 <= end_date_3:
         call(["java", "Autoingestion", "autoingestion.properties", "80082574", "Sales", "Daily", "Summary", "%s" % start_date_3.strftime("%Y%m%d")])
         if os.path.isfile("S_D_80082574_%s.txt.gz" % start_date_3.strftime("%Y%m%d")):
             print "Uploading ITunes sales report for %s" % start_date_3
-            call(["s3cmd", "put", "S_D_80082574_%s.txt.gz" % start_date_3.strftime("%Y%m%d"), "s3://bibusuu/Itunes_sales_reports/new_files_2/%s/S_D_80082574_%s.txt.gz" % (start_date_2.strftime("%Y%m%d"),start_date_2)])
+            call(["s3cmd", "put", "S_D_80082574_%s.txt.gz" % start_date_3.strftime("%Y%m%d"), "s3://bibusuu/Itunes_sales_reports/new_files_2/%s/S_D_80082574_%s.txt.gz" % (start_date_3.strftime("%Y%m%d"), start_date_3)])
             print "Removing local file for %s" % start_date_3
             os.remove("S_D_80082574_%s.txt.gz" % start_date_3.strftime("%Y%m%d"))
 
