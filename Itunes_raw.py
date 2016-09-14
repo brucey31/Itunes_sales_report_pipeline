@@ -58,7 +58,7 @@ cursor.execute("drop table if exists ITunes_raw_2;")
 print "Creating new table \n ITunes_raw_2 "
 cursor.execute("Create table itunes_raw_2(Provider varchar(10),Provider_country varchar(5),SKU varchar(100),Developer varchar(200),Title varchar(200),Version varchar(10),Product_types varchar(20),Units int,Developer_proceeds decimal,Begin_date varchar(20),end_date varchar(20),Customer_currency varchar(5),Country_code varchar(5),Country_proceeds varchar(5),Apple_id varchar(40),customer_price decimal,Promo_code varchar(20),Parent_id int,Subscription varchar(20),Period varchar(20),Catagory varchar(15),CMB varchar(10));")
 print "Copying ITunes TXT data from S3 to  \n ITunes_raw_2 "
-cursor.execute("COPY itunes_raw_2  FROM 's3://bibusuu/Itunes_sales_reports/old_files/'  CREDENTIALS 'aws_access_key_id=AKIAITPOBFF7K7ZPLIRQ;aws_secret_access_key=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' DELIMITER '\t' IGNOREHEADER 1 GZIP;")
+cursor.execute("COPY itunes_raw_2  FROM 's3://bibusuu/Itunes_sales_reports/old_files/'  CREDENTIALS 'aws_access_key_id=%s;aws_secret_access_key=%s' DELIMITER '\t' IGNOREHEADER 1 GZIP;" % (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY))
 print "Deleting old table ITunes_raw_first_half"
 cursor.execute("Drop Table if exists \n ITunes_raw_first_half")
 print "Renaming table  \n ITunes_raw_2 \nto \n ITunes_raw_first_half"
@@ -86,7 +86,7 @@ cursor.execute("drop table if exists ITunes_raw_2;")
 print "Creating new table \n ITunes_raw_2 "
 cursor.execute("Create table itunes_raw_2(Provider varchar(10),Provider_country varchar(5),SKU varchar(100),Developer varchar(200),Title varchar(200),Version varchar(10),Product_types varchar(20),Units int,Developer_proceeds decimal,Begin_date varchar(20),end_date varchar(20),Customer_currency varchar(5),Country_code varchar(5),Country_proceeds varchar(5),Apple_id varchar(40),customer_price decimal,Promo_code varchar(20),Parent_id int,Subscription varchar(20),Period varchar(20),Catagory varchar(15),CMB varchar(10),Device varchar(10),Supported_platforms varchar(15));")
 print "Copying ITunes TXT data from S3 to  \n ITunes_raw_2 "
-cursor.execute("COPY itunes_raw_2  FROM 's3://bibusuu/Itunes_sales_reports/new_files/'  CREDENTIALS 'aws_access_key_id=AKIAITPOBFF7K7ZPLIRQ;aws_secret_access_key=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' DELIMITER '\t' IGNOREHEADER 1 GZIP;")
+cursor.execute("COPY itunes_raw_2  FROM 's3://bibusuu/Itunes_sales_reports/new_files/'  CREDENTIALS 'aws_access_key_id=%s;aws_secret_access_key=%s' DELIMITER '\t' IGNOREHEADER 1 GZIP;" % (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY))
 print "Deleting old table ITunes_raw_second_half"
 cursor.execute("Drop Table if exists \n ITunes_raw_second_half")
 print "Renaming table  \n ITunes_raw_2 \nto \n ITunes_second_half"
@@ -160,7 +160,7 @@ cursor.execute("drop table if exists ITunes_raw_2;")
 print "Creating new table \n ITunes_raw_2 "
 cursor.execute("Create table itunes_raw_2(Provider varchar(10),Provider_country varchar(5),SKU varchar(100),Developer varchar(200),Title varchar(200),Version varchar(10),Product_types varchar(20),Units int,Developer_proceeds decimal,Begin_date varchar(20),end_date varchar(20),Customer_currency varchar(5),Country_code varchar(5),Country_proceeds varchar(5),Apple_id varchar(40),customer_price decimal,Promo_code varchar(20),Parent_id int,Subscription varchar(20),Period varchar(20),Catagory varchar(15),CMB varchar(10),Device varchar(10),Supported_platforms varchar(15), proceeds_reason varchar(100));")
 print "Copying ITunes TXT data from S3 to  \n ITunes_raw_2 "
-cursor.execute("COPY itunes_raw_2  FROM 's3://bibusuu/Itunes_sales_reports/new_files_2/'  CREDENTIALS 'aws_access_key_id=AKIAITPOBFF7K7ZPLIRQ;aws_secret_access_key=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' DELIMITER '\t' IGNOREHEADER 1 GZIP;")
+cursor.execute("COPY itunes_raw_2  FROM 's3://bibusuu/Itunes_sales_reports/new_files_2/'  CREDENTIALS 'aws_access_key_id=%s;aws_secret_access_key=%s' DELIMITER '\t' IGNOREHEADER 1 GZIP;" % (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY))
 print "Deleting old table ITunes_raw_third_bit"
 cursor.execute("Drop Table if exists \n ITunes_raw_third_bit")
 print "Renaming table  \n ITunes_raw_2 \nto \n ITunes_raw_third_bit"
@@ -171,7 +171,7 @@ cursor.execute("drop table if exists ITunes_raw_2;")
 print "Creating new table \n ITunes_raw_2 "
 cursor.execute("Create table itunes_raw_2(Provider varchar(10),Provider_country varchar(5),SKU varchar(100),Developer varchar(200),Title varchar(200),Version varchar(10),Product_types varchar(20),Units int,Developer_proceeds decimal,Begin_date varchar(20),end_date varchar(20),Customer_currency varchar(5),Country_code varchar(5),Country_proceeds varchar(5),Apple_id varchar(40),customer_price decimal,Promo_code varchar(20),Parent_id int,Subscription varchar(20),Period varchar(20),Catagory varchar(15),CMB varchar(10),Device varchar(10),Supported_platforms varchar(15), proceeds_reason varchar(100), preserved_pricing varchar(250), client varchar(250));")
 print "Copying ITunes TXT data from S3 to  \n ITunes_raw_2 "
-cursor.execute("COPY itunes_raw_2  FROM 's3://bibusuu/Itunes_sales_reports/new_files_3/'  CREDENTIALS 'aws_access_key_id=AKIAITPOBFF7K7ZPLIRQ;aws_secret_access_key=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' DELIMITER '\t' IGNOREHEADER 1 GZIP;")
+cursor.execute("COPY itunes_raw_2  FROM 's3://bibusuu/Itunes_sales_reports/new_files_3/'  CREDENTIALS 'aws_access_key_id=%s;aws_secret_access_key=%s' DELIMITER '\t' IGNOREHEADER 1 GZIP;" % (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY))
 print "Deleting old table ITunes_raw_fourth_bit"
 cursor.execute("Drop Table if exists \n ITunes_raw_fourth_bit")
 print "Renaming table  \n ITunes_raw_2 \nto \n ITunes_raw_fourth_bit"
