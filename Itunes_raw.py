@@ -105,7 +105,7 @@ while start_date_3 <= end_date_3:
     else:
 
         print "Downloading ITunes sales report for %s" % start_date_3
-        call(["java", "-jar", "Reporter.jar" "p=Reporter.properties" "80082574", "Sales", "Daily", "Summary","%s" % start_date_3.strftime("%Y%m%d")])
+        call(["java", "-jar", "Reporter.jar", "p=Reporter.properties", "80082574", "Sales", "Daily", "Summary","%s" % start_date_3.strftime("%Y%m%d")])
         if os.path.isfile("S_D_80082574_%s.txt.gz" % start_date_3.strftime("%Y%m%d")):
             print "Uploading ITunes sales report for %s" % start_date_3
             call(["s3cmd", "put", "S_D_80082574_%s.txt.gz" % start_date_3.strftime("%Y%m%d"), "s3://bibusuu/Itunes_sales_reports/new_files_2/%s/S_D_80082574_%s.txt.gz" % (start_date_3.strftime("%Y%m%d"), start_date_3)])
@@ -129,7 +129,7 @@ while start_date_4 <= end_date_4:
     else:
 
         print "Downloading ITunes sales report for %s" % start_date_4
-        call(["java", "-jar", "Reporter.jar" "p=Reporter.properties" "80082574", "Sales", "Daily", "Summary", "%s" % start_date_4.strftime("%Y%m%d")])
+        call(["java", "-jar", "Reporter.jar", "p=Reporter.properties", "80082574", "Sales", "Daily", "Summary", "%s" % start_date_4.strftime("%Y%m%d")])
         if os.path.isfile("S_D_80082574_%s.txt.gz" % start_date_4.strftime("%Y%m%d")):
             print "Uploading ITunes sales report for %s" % start_date_4
             call(["s3cmd", "put", "S_D_80082574_%s.txt.gz" % start_date_4.strftime("%Y%m%d"), "s3://bibusuu/Itunes_sales_reports/new_files_3/%s/S_D_80082574_%s.txt.gz" % (start_date_4.strftime("%Y%m%d"), start_date_4)])
